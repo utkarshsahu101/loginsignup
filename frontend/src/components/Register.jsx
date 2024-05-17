@@ -40,15 +40,22 @@ function Register() {
     let { errorStatus, errorName } = getPasswordCheck();
     if (errorStatus) return showToastMessage(errorName, "error");
     try {
-      const { success, message, data } = await axios.post(
-        "/register",
-        userDetails
-      );
+      const response = await axios.post("/auth/register", userDetails);
+      const {
+        data: { success, message },
+      } = response;
       if (success) {
         showToastMessage(message, "success");
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
       } else showToastMessage(message, "error");
     } catch (error) {
-      console.error("Error logging in:", error);
+      if (error?.response?.status === 400) {
+        showToastMessage(error?.response?.data?.message, "error");
+      } else {
+        console.error("Error logging in:", error);
+      }
     }
   };
 

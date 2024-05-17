@@ -4,6 +4,7 @@
 4.forget password - email tracker - link wala, otp, security question
 5.signin with email - verification
 6.if chrome have jwt token and after copying this token in mozilla then it must fail for authentication
+7.incorrect multilpe attemplts - lock
 
 └── /src
     └── /assets

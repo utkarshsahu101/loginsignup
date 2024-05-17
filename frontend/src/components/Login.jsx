@@ -6,6 +6,7 @@ import { AuthContext } from "../context/AuthContext";
 import { GoogleLogin } from "@react-oauth/google";
 import GoogleOAuthLogin from "../features/authentication/components/GoogleOAuthLogin";
 import AuthenticationFeature from "../features/authentication";
+import Button from "./Button";
 
 function Login() {
   const navigate = useNavigate();
@@ -34,9 +35,10 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const response = await axios.post("/auth/login", userDetails);
       const {
         data: { success, message, token: jwtToken },
-      } = await axios.post("/auth/login", userDetails);
+      } = response;
       if (success) {
         setToken(jwtToken);
         localStorage.setItem("token", jwtToken);
@@ -50,7 +52,12 @@ function Login() {
         localStorage.removeItem("token");
       }
     } catch (error) {
-      console.error("Error logging in:", error);
+      if (error?.response?.status === 401) {
+        // Handle invalid email/password error
+        showToastMessage("Invalid email or password", "error");
+      } else {
+        console.error("Error logging in:", error);
+      }
     }
   };
 
@@ -81,6 +88,19 @@ function Login() {
           onChange={handleFormFieldChange}
           name={"password"}
         />
+        <br />
+        <label>Remember Me</label>
+        <input type="checkbox" />
+        <Button
+          onClick={() => navigate("/forgetpassword")}
+          style={{
+            background: "#fff",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Forget Password
+        </Button>
         <br />
         <button type="submit">Submit</button>
       </form>

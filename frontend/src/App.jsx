@@ -8,12 +8,13 @@ import "./index.css";
 import Header from "./layouts/Header/Header";
 import { AuthProvider } from "./context/AuthContext";
 import Login from "./components/Login";
+import ForgetPassword from "./features/authentication/components/ForgetPassword";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <Header />
+        {/* <Header /> */}
         <Routes>
           <Route element={<PrivateRoute />}>
             <Route path="/" element={<Home />} />
@@ -21,6 +22,7 @@ function App() {
             {/* <Route path="/feed" element={<Feed />} /> */}
           </Route>
           <Route path="/login" element={<Login />} />
+          <Route path="/forgetpassword" element={<ForgetPassword />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </Router>

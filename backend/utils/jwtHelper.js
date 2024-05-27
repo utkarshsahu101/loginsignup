@@ -8,6 +8,6 @@ const generateToken = (user, expirationTime = "1h") => {
 };
 
 const verifyToken = (token) => {
-  return jwt.verify(token, SECRET_KEY);
+  return jwt.verify(token, secretKey);
 };
 module.exports = { generateToken, verifyToken };

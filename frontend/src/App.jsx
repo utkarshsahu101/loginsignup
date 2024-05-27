@@ -9,6 +9,7 @@ import Header from "./layouts/Header/Header";
 import { AuthProvider } from "./context/AuthContext";
 import Login from "./components/Login";
 import ForgetPassword from "./features/authentication/components/ForgetPassword";
+import ResetPassword from "./features/authentication/components/ResetPassword";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/forgetpassword" element={<ForgetPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </Router>

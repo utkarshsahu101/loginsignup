@@ -1,10 +1,11 @@
 1.Logout Feature - ✅
 2.if the user login then on accessing login route it must redirect to previous route - eg - if the user is login and redirected to dashboard route then on accessing login route it must redirected to dashboard route
-3.3rd party authentication - google, fb
-4.forget password - email tracker - link wala, otp, security question
+3.3rd party authentication - google - ✅
+4.forget password - email tracker - link wala (- ✅), otp, security question
 5.signin with email - verification
 6.if chrome have jwt token and after copying this token in mozilla then it must fail for authentication
 7.incorrect multilpe attemplts - lock
+8.check you email - redirect to email app button - https://dribbble.com/shots/24003037-Reset-password-UI
 
 └── /src
     └── /assets
